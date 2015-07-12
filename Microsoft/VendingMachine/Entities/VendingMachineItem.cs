@@ -10,24 +10,40 @@ using VendingMachine.Entities.Enums;
 
 namespace VendingMachine.Entities
 {
-    [Serializable]
-    public interface VendingMachineItem : IXmlSerializable
+    //[Serializable]
+    public class VendingMachineItem
     {
-        [XmlAttribute]
-        string Name;
+        public VendingMachineItem(string name, VendingMachineItemTypes type, float cost, int remaining, string key)
+        {
+            Name = name;
+            Type = type;
+            Cost = cost;
+            Remaining = remaining;
+            Key = key;
+        }
+
+        public VendingMachineItem()
+        {
+        }
 
         [XmlAttribute]
-        Decimal Cost;
+        public string Name { get; set; }
 
         [XmlAttribute]
-        int Remaining;
+        public float Cost { get; set; }
 
         [XmlAttribute]
-        string Key;
+        public int Remaining { get; set; }
 
         [XmlAttribute]
-        VendingMachineItemTypes Type;
+        public string Key { get; set; }
 
-        void Print();
+        [XmlAttribute]
+        public VendingMachineItemTypes Type { get; set; }
+
+        public void Print(out string output)
+        {
+            output = "The item info";
+        }
     }
 }

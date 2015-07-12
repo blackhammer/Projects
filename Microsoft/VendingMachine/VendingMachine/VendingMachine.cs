@@ -14,8 +14,6 @@ namespace VendingMachine
 {
     public class VendingMachine
     {
-        protected VendingMachineConfig inventory = null;
-
         public float CurrentBalance { get; set; }
 
         public VendingMachine()
