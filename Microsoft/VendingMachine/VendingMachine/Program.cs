@@ -16,7 +16,8 @@ namespace VendingMachine
     {
         static void Main(string[] args)
         {
-            
+            VendingMachineConfig.Load();
+            VendingMachine vendingMachine = new VendingMachine(VendingMachineConfig.VendingMachineItems);
         }
 
         static void LoadData()

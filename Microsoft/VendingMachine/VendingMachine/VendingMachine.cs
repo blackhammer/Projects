@@ -16,8 +16,11 @@ namespace VendingMachine
     {
         public float CurrentBalance { get; set; }
 
-        public VendingMachine()
+        protected Dictionary<string, VendingMachineItem> Inventory { get; set; }
+
+        public VendingMachine(VendingMachineItems items )
         {
+            Inventory = items.Items.ToDictionary(item => item.Key);
         }
 
         public void InsertCoin(float money)
@@ -25,18 +28,23 @@ namespace VendingMachine
             CurrentBalance += money;
         }
 
-        public void RefundBalance()
+        public float RefundBalance()
         {
+            float refund = CurrentBalance;
             CurrentBalance = 0;
+            return refund;
         }
 
-        public List<VendingMachineItem> ListItems()
+        public string PrintItems()
         {
-            return new List<VendingMachineItem>();
+            StringBuilder items = new StringBuilder()
+
+            return items.ToString();
         }
 
         public void SelectItem(string key)
         {
+
         }
     }
 }
