@@ -37,7 +37,7 @@ namespace VendingMachine
 
         public string PrintItems()
         {
-            StringBuilder items = new StringBuilder()
+            StringBuilder items = new StringBuilder();
 
             return items.ToString();
         }
