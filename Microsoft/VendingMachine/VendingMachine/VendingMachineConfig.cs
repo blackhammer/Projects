@@ -18,7 +18,6 @@ namespace VendingMachine
     public static class VendingMachineConfig
     {
         public static string FilePath { get; set; }
-        public static string FilePathInitialize { get; set; }
 
         public static VendingMachineItems VendingMachineItems { get; set; }
 
@@ -32,7 +31,6 @@ namespace VendingMachine
             if (string.IsNullOrEmpty(FilePath))
             {
                 FilePath = ConfigurationManager.AppSettings["VendingMachineDB"];
-                //FilePathInitialize = ConfigurationManager.AppSettings["VendingMachineDBInitialize"];
             }
         }
 
@@ -73,7 +71,7 @@ namespace VendingMachine
                 }
                 catch (Exception)
                 {
-                    //We could add some extra details about this exception here, eg adding an error code etc.
+                    //We could add some extra details about this exception here, eg adding an error code or set an error message to display
                     throw;
                 }
             }

@@ -49,16 +49,17 @@
     <Compile Include="VendingMachineConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\VendingMachineDB-Init.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Docs\ASSUMPTIONS.txt" />
     <Content Include="Config\VendingMachineDB.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="README.txt" />
+    <Content Include="Docs\README.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\VendingMachine.Entities.csproj">

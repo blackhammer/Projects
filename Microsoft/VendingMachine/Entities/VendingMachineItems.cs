@@ -11,6 +11,7 @@ using VendingMachine.Entities.Enums;
 
 namespace VendingMachine.Entities
 {
+    [XmlRoot(ElementName="VendingMachineItems")]
     public class VendingMachineItems 
     {
         public List<VendingMachineItem> Items { get; set; }

@@ -18,9 +18,9 @@ namespace VendingMachine
 
         protected Dictionary<string, VendingMachineItem> Inventory { get; set; }
 
-        public VendingMachine(VendingMachineItems items )
+        public VendingMachine(VendingMachineItems items)
         {
-            Inventory = items.Items.ToDictionary(item => item.Key);
+            Inventory = items.Items.ToDictionary(item => item.Key.ToUpper());
         }
 
         public void InsertCoin(float money)
@@ -39,12 +39,41 @@ namespace VendingMachine
         {
             StringBuilder items = new StringBuilder();
 
+            List<VendingMachineItem> sortedItems = Inventory.Values.OrderBy<VendingMachineItem, string>(item => item.Key).ToList<VendingMachineItem>();
+
+            items.AppendLine("\tKey\tName\t\tCost\tRemaining");
+
+            foreach (VendingMachineItem item in Inventory.Values)
+            {
+                items.AppendLine(item.Print());
+            }
+
             return items.ToString();
         }
 
-        public void SelectItem(string key)
+        public bool SelectItem(string key, out VendingMachineItem vendingMachineItem)
         {
+            VendingMachineItem item = null;
+            bool successfulPurchase = false;
 
+            if (Inventory.TryGetValue(key.ToUpper(), out item))
+            {
+                if (item != null && item.Cost <= CurrentBalance && item.Remaining > 0)
+                {
+                    CurrentBalance -= item.Cost;
+                    item.Remaining--;
+                    successfulPurchase = true;
+                }
+            }
+
+            vendingMachineItem = item;
+
+            return successfulPurchase;
+        }
+
+        public VendingMachineItems GetItems()
+        {
+            return new VendingMachineItems() { Items = Inventory.Values.OrderBy<VendingMachineItem, string>(item => item.Key).ToList<VendingMachineItem>() };
         }
     }
 }

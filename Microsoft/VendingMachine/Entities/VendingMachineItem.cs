@@ -10,7 +10,6 @@ using VendingMachine.Entities.Enums;
 
 namespace VendingMachine.Entities
 {
-    //[Serializable]
     public class VendingMachineItem
     {
         public VendingMachineItem(string name, VendingMachineItemTypes type, float cost, int remaining, string key)
@@ -41,9 +40,10 @@ namespace VendingMachine.Entities
         [XmlAttribute]
         public VendingMachineItemTypes Type { get; set; }
 
-        public void Print(out string output)
+        public string Print()
         {
-            output = "The item info";
+            // Order: Key Name Cost Remaining
+            return string.Format("\t{0}\t{1}\t${2:F2}\t{3}", Key, Name, Cost, Remaining);
         }
     }
 }

@@ -1,0 +1,12 @@
+﻿Here are a few assumptions that were made for this project:
+
+1) When a user presses a key that is not listed in the instructions, the instructions are printed again.
+2) The instructions are not reprinted after a selection is made.
+3) Selecting an item from the vending machine and inserting money are 2 steps (ie to select the option, then to enter a choice/amount)
+4) If during the item selection or during inserting money, the user enters invalid data, the vending machine returns to the top level, 
+   ie, waiting for the user to select one of the options listed in the instructions (without reprinting instructions).
+5) The program will read a key input without echo for instruction actions, but requires the user to press enter after entering an amount or selecting an item.
+6) The program was not designed to handle any kind of tampering, for example, modifying or removing the VendingMachineDB.xml file before or during execution.
+7) The messages for the user are all hardcoded, but normally in a full application these strings would be placed in resource files.
+8) This program was built with Visual C# Express 2010, which does not have a built-in testing framework (2013 includes MS Test). Therefore, no automated unit tests were created.
+9) If an item is sold out, and there is not enough money in the machine to make a purchase, only the message stating the item is sold out will be printed.
